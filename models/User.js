@@ -1,6 +1,9 @@
+import bcrypt from "bcryptjs";
+import jwt from "jsonwebtoken";
 import { Schema, model } from "mongoose";
-import { hash, compare } from "bcryptjs";
-import { sign } from "jsonwebtoken";
+
+const { hash, compare } = bcrypt;
+const { sign } = jwt;
 
 const UserSchema = new Schema(
   {
