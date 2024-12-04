@@ -1,7 +1,7 @@
 import express from "express";
-import { uploadPDF, getAllPDFs, servePDF } from "../controllers/pdfController";
-import { upload, validatePDFId } from "../middleware/uploadPDFMiddleware";
-import { adminGuard, authGuard } from "../middleware/authMiddleware";
+import { uploadPDF, getAllPDFs, servePDF } from "../controllers/pdfController.js";
+import { upload, validatePDFId } from "../middleware/uploadPDFMiddleware.js";
+import { adminGuard, authGuard } from "../middleware/authMiddleware.js";
 
 const router = express.Router();
 
