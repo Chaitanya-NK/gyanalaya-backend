@@ -1,4 +1,4 @@
-import PDF from "../models/PDF";
+import PDF from "../models/PDF.js";
 import fs from "fs"
 import path from "path";
 
