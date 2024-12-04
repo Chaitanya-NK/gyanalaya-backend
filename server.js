@@ -23,9 +23,7 @@ const app = express();
 app.use(express.json());
 
 const corsOptions = {
-  origin: "https://gyanalaya-blog.onrender.com", // Frontend domain
-  methods: ["GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"],
-  credentials: true, // If cookies or authentication are used
+  exposedHeaders: "*"
 };
 
 app.use(cors(corsOptions));
