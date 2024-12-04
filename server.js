@@ -15,6 +15,8 @@ import postRoutes from "./routes/postRoutes.js";
 import commentRoutes from "./routes/commentRoutes.js";
 import postCategoriesRoutes from "./routes/postCategoriesRoutes.js";
 import pdfRoutes from "./routes/pdfRoutes.js";
+import path from "path";
+import { fileURLToPath } from "url";
 
 dotenv.config();
 connectDB();
@@ -38,6 +40,11 @@ app.use("/api/post-categories", postCategoriesRoutes);
 app.use("/api", pdfRoutes);
 
 // static assets
+
+// Simulate __dirname
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
 app.use("/uploads", express.static(path.join(__dirname, "/uploads")));
 
 app.use(invalidPathHandler);
