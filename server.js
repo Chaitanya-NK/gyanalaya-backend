@@ -15,7 +15,6 @@ import postRoutes from "./routes/postRoutes.js";
 import commentRoutes from "./routes/commentRoutes.js";
 import postCategoriesRoutes from "./routes/postCategoriesRoutes.js";
 import pdfRoutes from "./routes/pdfRoutes.js";
-import path from "path";
 import { fileURLToPath } from "url"
 
 dotenv.config();
