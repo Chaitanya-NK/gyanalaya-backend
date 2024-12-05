@@ -27,7 +27,7 @@ app.use(express.json());
 // };
 
 app.use(cors({
-  allowedHeaders: "*"
+  allowedHeaders: "https://gyanalaya-blog.netlify.app"
 }));
 
 
