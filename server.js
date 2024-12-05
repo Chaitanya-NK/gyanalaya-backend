@@ -44,7 +44,7 @@ const __dirname = path.dirname(__filename);
 app.use("/uploads", express.static(path.join(__dirname, "/uploads")));
 
 // Serve frontend
-const frontendPath = path.join(__dirname, "../frontend/build");
+const frontendPath = path.join(__dirname, "../sanatan-blog-frontend/build");
 app.use(express.static(frontendPath));
 
 app.get("*", (req, res) => {
