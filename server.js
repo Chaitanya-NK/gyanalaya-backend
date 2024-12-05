@@ -38,7 +38,7 @@ app.use("/api/users", userRoutes);
 app.use("/api/posts", postRoutes);
 app.use("/api/comments", commentRoutes);
 app.use("/api/post-categories", postCategoriesRoutes);
-app.use("/api", pdfRoutes);
+app.use("/api/pdf", pdfRoutes);
 
 // static assets
 
