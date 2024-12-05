@@ -2,7 +2,7 @@ import express from "express";
 import dotenv from "dotenv";
 import path from "path";
 import connectDB from "./config/db.js";
-const cors = require("cors")
+import cors from "cors";
 import multer from "multer";
 import {
   errorResponserHandler,
