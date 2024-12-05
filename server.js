@@ -27,8 +27,11 @@ app.use(express.json());
 // };
 
 app.use(cors({
-  origin: "*",
+  origin: "https://gyanalaya-blog.netlify.app", // Allow only this origin
+  methods: ["GET", "POST", "PUT", "DELETE"], // Allowed methods
+  credentials: true, // Allow credentials (cookies, authorization headers)
 }));
+
 
 
 app.get("/", (req, res) => {
