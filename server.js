@@ -22,15 +22,11 @@ const app = express();
 
 app.use(express.json());
 
-// const corsOptions = {
-//   exposedHeaders: "*"
-// };
+const corsOptions = {
+  exposedHeaders: "*"
+};
 
-app.use(cors({
-  origin: "https://gyanalaya-blog.netlify.app", // Allow only this origin
-  methods: ["GET", "POST", "PUT", "DELETE"], // Allowed methods
-  credentials: true, // Allow credentials (cookies, authorization headers)
-}));
+app.use(cors(corsOptions))
 
 
 
