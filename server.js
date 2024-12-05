@@ -3,7 +3,6 @@ import dotenv from "dotenv";
 import path from "path";
 import connectDB from "./config/db.js";
 import cors from "cors";
-import multer from "multer";
 import {
   errorResponserHandler,
   invalidPathHandler,
@@ -20,6 +19,7 @@ import { fileURLToPath } from "url"
 dotenv.config();
 connectDB();
 const app = express();
+
 app.use(express.json());
 
 // const corsOptions = {
@@ -28,11 +28,30 @@ app.use(express.json());
 
 // app.use(cors());
 
-app.use(cors(
-  {
-    origin: "https://gyanalaya-blog.onrender.com",
-  }
-))
+// app.use(cors(
+//   {
+//     origin: "https://gyanalaya-blog.onrender.com",
+//   }
+// ))
+
+app.use((req, res, next) => {
+  res.header('Access-Control-Allow-Origin', '*');
+  next();
+});
+
+app.get('*', (req, res) => {
+  request(
+    { url: 'https://gyanalaya-blog.onrender.com/*' },
+    (error, response, body) => {
+      if (error || response.statusCode !== 200) {
+        return res.status(500).json({ type: 'error', message: err.message });
+      }
+
+      res.json(JSON.parse(body));
+    }
+  )
+});
+
 
 app.get("/", (req, res) => {
   res.send("Server is running...");
