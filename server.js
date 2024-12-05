@@ -14,7 +14,7 @@ import postRoutes from "./routes/postRoutes.js";
 import commentRoutes from "./routes/commentRoutes.js";
 import postCategoriesRoutes from "./routes/postCategoriesRoutes.js";
 import pdfRoutes from "./routes/pdfRoutes.js";
-import { fileURLToPath } from "url"
+import { fileURLToPath } from "url";
 
 dotenv.config();
 connectDB();
@@ -23,12 +23,10 @@ const app = express();
 app.use(express.json());
 
 const corsOptions = {
-  exposedHeaders: "*"
+  exposedHeaders: "*",
 };
 
-app.use(cors(corsOptions))
-
-
+app.use(cors(corsOptions));
 
 app.get("/", (req, res) => {
   res.send("Server is running...");
@@ -40,14 +38,20 @@ app.use("/api/comments", commentRoutes);
 app.use("/api/post-categories", postCategoriesRoutes);
 app.use("/api/pdf", pdfRoutes);
 
-// static assets
-
-// Simulate __dirname
+// Static assets and uploads
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
-
 app.use("/uploads", express.static(path.join(__dirname, "/uploads")));
 
+// Serve frontend
+const frontendPath = path.join(__dirname, "../frontend/build");
+app.use(express.static(frontendPath));
+
+app.get("*", (req, res) => {
+  res.sendFile(path.resolve(frontendPath, "index.html"));
+});
+
+// Error handling middleware
 app.use(invalidPathHandler);
 app.use(errorResponserHandler);
 
