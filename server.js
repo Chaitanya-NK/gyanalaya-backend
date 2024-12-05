@@ -22,11 +22,13 @@ const app = express();
 
 app.use(express.json());
 
-const corsOptions = {
-  exposedHeaders: "*"
-};
+// const corsOptions = {
+//   exposedHeaders: "*"
+// };
 
-app.use(cors(corsOptions));
+app.use(cors({
+  allowedHeaders: "*"
+}));
 
 
 app.get("/", (req, res) => {
