@@ -23,11 +23,10 @@ const app = express();
 app.use(express.json());
 
 const corsOptions = {
-  origin: "https://gyanalaya-blog.onrender.com", // Frontend domain
   exposedHeaders: "*",
 };
-app.use(cors(corsOptions));
 
+app.use(cors(corsOptions));
 
 app.get("/", (req, res) => {
   res.send("Server is running...");
