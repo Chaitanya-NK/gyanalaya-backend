@@ -22,17 +22,12 @@ const app = express();
 
 app.use(express.json());
 
-// const corsOptions = {
-//   exposedHeaders: "*"
-// };
+const corsOptions = {
+  exposedHeaders: "*"
+};
 
-// app.use(cors());
+app.use(cors(corsOptions));
 
-app.use(cors(
-  {
-    origin: "https://gyanalaya-blog.onrender.com/*",
-  }
-))
 
 app.get("/", (req, res) => {
   res.send("Server is running...");
