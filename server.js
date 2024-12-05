@@ -2,7 +2,7 @@ import express from "express";
 import dotenv from "dotenv";
 import path from "path";
 import connectDB from "./config/db.js";
-import cors from "cors";
+const cors = require("cors")
 import multer from "multer";
 import {
   errorResponserHandler,
@@ -22,11 +22,11 @@ connectDB();
 const app = express();
 app.use(express.json());
 
-const corsOptions = {
-  exposedHeaders: "*"
-};
+// const corsOptions = {
+//   exposedHeaders: "*"
+// };
 
-app.use(cors(corsOptions));
+app.use(cors());
 
 app.get("/", (req, res) => {
   res.send("Server is running...");
