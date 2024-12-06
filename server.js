@@ -30,7 +30,7 @@ const corsOptions = {
 };
 
 app.use(cors(corsOptions));
-
+app.options("*", cors(corsOptions));
 
 app.get("/", (req, res) => {
   res.send("Server is running...");
@@ -43,11 +43,7 @@ app.use("/api/post-categories", postCategoriesRoutes);
 app.use("/api/pdf", pdfRoutes);
 
 // Static assets and uploads
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
 app.use("/uploads", express.static(path.join(__dirname, "/uploads")));
-
-// Serve frontend
 const frontendPath = path.join(__dirname, "../sanatan-blog-frontend/build");
 app.use(express.static(frontendPath));
 
