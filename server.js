@@ -20,29 +20,29 @@ dotenv.config();
 connectDB();
 const app = express();
 
+// Fix for __dirname
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
 app.use(express.json());
 
+// CORS Configuration
 const corsOptions = {
-  origin: "https://gyanalaya-blog.onrender.com", // Allow only your frontend domain
-  methods: ["GET", "POST", "PUT", "DELETE"], // Specify allowed methods
-  credentials: true, // Include cookies/credentials in requests
-  exposedHeaders: "*", // Keep this if you want all headers to be exposed
+  origin: "https://gyanalaya-blog.onrender.com",
+  methods: ["GET", "POST", "PUT", "DELETE"],
+  credentials: true,
+  exposedHeaders: "*",
 };
-
 app.use(cors(corsOptions));
-app.options("*", cors(corsOptions));
 
-app.get("/", (req, res) => {
-  res.send("Server is running...");
-});
-
+// API routes
 app.use("/api/users", userRoutes);
 app.use("/api/posts", postRoutes);
 app.use("/api/comments", commentRoutes);
 app.use("/api/post-categories", postCategoriesRoutes);
 app.use("/api/pdf", pdfRoutes);
 
-// Static assets and uploads
+// Static assets and frontend
 app.use("/uploads", express.static(path.join(__dirname, "/uploads")));
 const frontendPath = path.join(__dirname, "../sanatan-blog-frontend/build");
 app.use(express.static(frontendPath));
