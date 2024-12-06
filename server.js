@@ -29,9 +29,6 @@ app.use(express.json());
 // CORS Configuration
 const corsOptions = {
   origin: "https://gyanalaya-blog.onrender.com",
-  methods: "*",
-  credentials: true,
-  exposedHeaders: "*",
 };
 app.use(cors(corsOptions));
 
