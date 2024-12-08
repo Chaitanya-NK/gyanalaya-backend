@@ -1,7 +1,7 @@
 import express from "express";
-import { uploadPDF, getAllPDFs, servePDF } from "../controllers/pdfController.js";
-import { upload, validatePDFId } from "../middleware/uploadPDFMiddleware.js";
-import { adminGuard, authGuard } from "../middleware/authMiddleware.js";
+import { uploadPDF, getAllPDFs, deletePDF } from "../controllers/pdfController.js";
+import { upload } from "../middleware/uploadPDFMiddleware.js";
+import { authGuard, adminGuard } from "../middleware/authMiddleware.js";
 
 const router = express.Router();
 
@@ -11,7 +11,7 @@ router.post("/upload", authGuard, adminGuard, upload.single("pdf"), uploadPDF);
 // Fetch all PDFs route for GET
 router.get("/", getAllPDFs);
 
-router.get("/:pdfId", validatePDFId, servePDF);
-
+// Delete a PDF route for DELETE
+router.delete("/:pdfId", authGuard, adminGuard, deletePDF);
 
 export default router;

@@ -23,16 +23,4 @@ const upload = multer({
   },
 });
 
-const validatePDFId = (req, res, next) => {
-  const { pdfId } = req.params;
-
-  if (!pdfId) {
-    return res.status(400).json({ message: "PDF ID is required" });
-  }
-
-  // Further validation logic can go here if needed
-  next();
-};
-
-
-export { upload, validatePDFId }
+export { upload };
